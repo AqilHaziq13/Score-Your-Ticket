@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="public-head" :: public-head/>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+<div class="w-100 h-100 img-wrap">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header th:replace="public-nav :: public-nav"></header>
+
+        <form th:action="@{/admin/matches/save}" method="post" th:object="${matches}">
+            <div class="container p-3">
+                <h1 class="mb-3">Add Match</h1>
+                <div class="mt-3 mb-3 row">
+
+                    <label for="id" class="col-sm-2 col-form-label">Match ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="id" id="id" class="form-control" placeholder="Match ID">
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3 row">
+                    <label for="teamO" class="col-sm-2 col-form-label">Team One</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="teamO" id="teamO" class="form-control" placeholder="Team One">
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3 row">
+                    <label for="teamT" class="col-sm-2 col-form-label">Team Two</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="teamT" id="teamT" class="form-control" placeholder="Team Two">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="dateTime" class="col-sm-2 col-form-label">Date & Time</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="dateTime" id="dateTime" class="form-control" placeholder="Date & Time">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div>
+                    <a th:href="@{/admin/matches}" class="btn btn-primary mb-3 text-uppercase" style="width:120px;">Back</a>
+                    <button type="submit" class="btn btn-primary mb-3 text-uppercase" style="width:120px;">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer th:replace="public-footer :: public-footer"></footer>
+</div>
+</div>
+
+</body>
+</html>

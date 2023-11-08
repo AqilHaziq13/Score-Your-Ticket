@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public-head" :: public-head/>
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="w-100 h-100 img-wrap">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header th:replace="public-nav :: public-nav"></header>
+        <main class="px-3">
+            <img src="/images/logo.png" alt="Score Your Ticket" height="200" width="200">
+            <h1>Score Your Ticket</h1>
+            <p sec:authorize="isAnonymous()" class="lead">Welcome. Please <a th:href="@{/login}">login</a> with your registered account.</p>
+            <p sec:authorize="!hasRole('ADMIN') and isAuthenticated()">Welcome,
+                [[${#request.userPrincipal.principal.fullName}]].</p>
+            <p sec:authorize="hasRole('ADMIN')">Welcome, Admin.</p>
+        </main>
+
+        <footer th:replace="public-footer :: public-footer"></footer>
+    </div>
+</div>
+<!--<div align="center" class="container-fluid text-center">
+    <h1>Library Management System</h1>
+    <a class="h2" th:href="@{/users}">Manage Users</a>
+</div>-->
+</body>
+</html>

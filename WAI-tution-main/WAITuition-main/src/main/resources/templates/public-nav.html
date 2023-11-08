@@ -1,0 +1,34 @@
+<header class="mb-auto" th:fragment="public-nav">
+    <div>
+        <h3 class="float-md-start mb-2">Score Your Ticket</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}" class="nav-link"
+               aria-current="page" th:href="@{/}">Home</a>
+
+            <a sec:authorize="hasRole('ADMIN')"
+               th:classappend="${#httpServletRequest.getRequestURI().contains('/matches') and !#httpServletRequest.getRequestURI().contains('/admin') ? 'active':''}"
+               class="nav-link" th:href="@{/matches}">Matches</a>
+
+            <a sec:authorize="isAuthenticated()"
+               th:classappend="${#httpServletRequest.getRequestURI().contains('/ticket') and !#httpServletRequest.getRequestURI().contains('/admin') ? 'active':''}"
+               class="nav-link" th:href="@{/ticket}">Ticket</a>
+
+            <a sec:authorize="isAnonymous()"
+               th:classappend="${#httpServletRequest.getRequestURI().contains('/login') or #httpServletRequest.getRequestURI().contains('/register') ? 'active':''}" class="nav-link"
+               th:href="@{/login}">Login</a>
+
+            <a sec:authorize="hasRole('ADMIN')"
+               th:classappend="${#httpServletRequest.getRequestURI().contains('/admin/matches') ? 'active':''}"
+               class="nav-link" th:href="@{/admin/matches}">Manage Matches</a>
+
+            <a sec:authorize="hasRole('ADMIN')"
+               th:classappend="${#httpServletRequest.getRequestURI().contains('/admin/ticket') ? 'active':''}"
+               class="nav-link" th:href="@{/admin/ticket}">Manage Ticket</a>
+
+            <a sec:authorize="isAuthenticated()"
+               th:classappend="${#httpServletRequest.getRequestURI() == '/logout' ? 'active':''}" class="nav-link"
+               th:href="@{/logout}">Logout</a>
+
+        </nav>
+    </div>
+</header>

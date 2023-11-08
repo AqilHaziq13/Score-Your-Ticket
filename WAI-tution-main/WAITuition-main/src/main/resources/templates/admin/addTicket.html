@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="public-head" :: public-head/>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+<div class="w-100 h-100 img-wrap">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header th:replace="public-nav :: public-nav"></header>
+
+        <form th:action="@{/admin/ticket/save}" method="post" th:object="${ticket}">
+            <div class="container p-3">
+                <h1 class="mb-3 ">Add Ticket</h1>
+                <div class="mt-3 mb-3 row">
+
+                    <label for="id" class="col-sm-2 col-form-label">Ticket ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="id" id="id" class="form-control" placeholder="Ticket ID">
+                    </div>
+                </div>
+                <div class="mt-3 mb-3 row">
+                    <label for="vs" class="col-sm-2 col-form-label">Match</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="vs" id="vs" class="form-control" placeholder="Match">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="stadium" class="col-sm-2 col-form-label">Stadium</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="stadium" id="stadium" class="form-control" placeholder="Stadium">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="gate" class="col-sm-2 col-form-label">Gate</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="gate" id="gate" class="form-control" placeholder="Gate">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="price" id="price" class="form-control" placeholder="Price">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <div>
+                        <a th:href="@{/admin/ticket}" class="btn btn-primary mb-3 text-uppercase" style="width:120px;">Back</a>
+                        <button type="submit" class="btn btn-primary mb-3 text-uppercase" style="width:120px;">Add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer th:replace="public-footer :: public-footer"></footer>
+</div>
+</div>
+
+</body>
+</html>
